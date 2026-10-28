@@ -1,0 +1,16 @@
+{
+  "name": "prompt-coach",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Claude Code mod that coaches your English while you write prompts",
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "validate": "claude plugin validate .",
+    "test": "claude plugin test ."
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3"
+  }
+}
