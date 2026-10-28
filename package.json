@@ -7,10 +7,21 @@
   "packageManager": "pnpm@10.28.0",
   "scripts": {
     "typecheck": "tsc -p .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "validate": "claude plugin validate .",
-    "test": "claude plugin test ."
+    "test": "claude plugin test .",
+    "check": "pnpm typecheck && pnpm lint && pnpm validate",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "typescript": "~6.0.3"
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "husky": "^9.1.7",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1"
   }
 }
