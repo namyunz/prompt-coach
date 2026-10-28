@@ -1,5 +1,6 @@
 {
   "name": "prompt-coach",
   "version": "0.1.0",
-  "description": "A Claude Code mod that coaches your English while you write prompts"
+  "description": "Shows grammar fixes and more natural English for your draft above the prompt box",
+  "types": "./types/index.d.ts"
 }
