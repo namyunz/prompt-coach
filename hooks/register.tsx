@@ -38,7 +38,9 @@ const parseReply = (text: string): { corrected: string; mistakes: Mistake[] } | 
     if (typeof corrected !== 'string' || !Array.isArray(mistakes)) return null
     const valid = mistakes.filter(
       (m): m is Mistake =>
-        typeof m?.original === 'string' && typeof m?.fix === 'string' && typeof m?.reason === 'string',
+        typeof m?.original === 'string' &&
+        typeof m?.fix === 'string' &&
+        typeof m?.reason === 'string',
     )
 
     return { corrected, mistakes: valid }

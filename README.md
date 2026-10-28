@@ -26,8 +26,9 @@ Uses [pnpm](https://pnpm.io) (version pinned in `packageManager`).
 
 ```bash
 pnpm install          # installs dev tools and sets up git hooks
-pnpm check            # typecheck + lint + validate + test
+pnpm check            # typecheck + lint + format check + validate + test
 pnpm lint:fix         # auto-fix lint issues
+pnpm format           # format with Prettier
 claude --plugin-dir . # run Claude Code with this mod loaded
 ```
 
@@ -38,4 +39,4 @@ The engine writes the API types into `.claude-plugin/types/` the first time it l
 Commit messages follow [Conventional Commits](https://www.conventionalcommits.org) (`feat: ...`, `fix: ...`, `chore: ...`). Git hooks (husky) enforce it:
 
 - `commit-msg`: commitlint with `@commitlint/config-conventional`
-- `pre-commit`: `pnpm typecheck` and `pnpm lint`
+- `pre-commit`: `pnpm typecheck`, `pnpm lint` and `pnpm format:check`

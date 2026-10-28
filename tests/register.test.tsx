@@ -25,7 +25,9 @@ const BAND = {
 const DRAFT = 'Please fix the bug that make test fail'
 const REPLY = JSON.stringify({
   corrected: 'Please fix the bug that makes the tests fail',
-  mistakes: [{ original: 'make test fail', fix: 'makes the tests fail', reason: '주어가 단수입니다' }],
+  mistakes: [
+    { original: 'make test fail', fix: 'makes the tests fail', reason: '주어가 단수입니다' },
+  ],
 })
 
 test('a typed English draft gets its corrections drawn above the prompt', async ($, on) => {
@@ -36,7 +38,12 @@ test('a typed English draft gets its corrections drawn above the prompt', async 
     value: {
       isAnswered: true,
       text: REPLY,
-      usage: { input_tokens: 1, output_tokens: 1, cache_creation_input_tokens: 0, cache_read_input_tokens: 0 },
+      usage: {
+        input_tokens: 1,
+        output_tokens: 1,
+        cache_creation_input_tokens: 0,
+        cache_read_input_tokens: 0,
+      },
     },
   }))
 
@@ -69,7 +76,11 @@ test('a Korean draft is left alone', async ($, on) => {
     return <Text>engine</Text>
   })
 
-  await ($ as unknown as PromptEvents).prompt.change({ origin: { kind: 'engine' }, text: '이 버그 좀 고쳐 주세요 부탁드립니다', cursor: 0 })
+  await ($ as unknown as PromptEvents).prompt.change({
+    origin: { kind: 'engine' },
+    text: '이 버그 좀 고쳐 주세요 부탁드립니다',
+    cursor: 0,
+  })
 
   const ui = await $.ui.mount({ ...BAND, surface: 'terminal' })
   expect((await ui.find({ type: 'Text' }))?.text).toBe('engine')
