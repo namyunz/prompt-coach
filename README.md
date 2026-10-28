@@ -22,10 +22,20 @@ Each check is one Haiku call billed to your Claude Code credentials.
 
 ## Develop
 
+Uses [pnpm](https://pnpm.io) (version pinned in `packageManager`).
+
 ```bash
-npm install        # TypeScript for type-checking
-npm run check      # typecheck + validate + test
-claude --plugin-dir .   # run Claude Code with this mod loaded
+pnpm install          # installs dev tools and sets up git hooks
+pnpm check            # typecheck + lint + validate + test
+pnpm lint:fix         # auto-fix lint issues
+claude --plugin-dir . # run Claude Code with this mod loaded
 ```
 
 The engine writes the API types into `.claude-plugin/types/` the first time it loads the mod; `tsc -p .` reads them from there.
+
+## Commits
+
+Commit messages follow [Conventional Commits](https://www.conventionalcommits.org) (`feat: ...`, `fix: ...`, `chore: ...`). Git hooks (husky) enforce it:
+
+- `commit-msg`: commitlint with `@commitlint/config-conventional`
+- `pre-commit`: `pnpm typecheck` and `pnpm lint`
